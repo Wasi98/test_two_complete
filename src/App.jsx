@@ -1,36 +1,35 @@
 
-import { useState } from 'react'
-import  {Navbar}  from './components/Navbar'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Home from './pages/Home'
+import {createBrowserRouter,RouterProvider,} from "react-router-dom";
 
-function App() {
+import Navbar from './components/Navbar';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Home from './pages/Home';
 
-  const [activePage, setActivePage] = useState('Home'); //default component 
+ function App() {
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <><Navbar /><Home /></>,
+    },
+    {
+      path: "/about",
+      element: <><Navbar /><About /></>,
+    },
+    {
+      path: "/contact",
+      element: <><Navbar /><Contact /></>,
+    },
+  ]);
 
   return (
     <>
-      <Navbar updateActivePage={setActivePage}/>
-
-      {
-        activePage === "Home" && (
-          <Home/>
-        )
-      }
-      {
-        activePage === "About" && (
-          <About/>
-        )
-      }
-      {
-        activePage === "Contact" && (
-          <Contact/>
-        )
-      }
-  
+    <RouterProvider router={router} />
     </>
-  )
+    
+  );
 }
 
-export default App
+export default App;
+

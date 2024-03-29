@@ -34,7 +34,6 @@ function Home() {
           <Services key={i} title={service.title} serviceImage={service.image} description={service.description}/>  //props passing
         ))
       }
-       
    </div>
    </>
   );

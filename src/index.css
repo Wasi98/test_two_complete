@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+.button_color{
+    background-color: black;
+    color: white;
+}

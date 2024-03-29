@@ -1,21 +1,24 @@
-import PropTypes from 'prop-types';
+// import React from 'react';
+// import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
 
 const menuItems = [
   {
     name: 'Home',
-    href: '',
+    to: '/',
   },
   {
     name: 'About',
-    href: '',
+    to: '/about',
   },
   {
     name: 'Contact',
-    href: '',
+    to: '/contact',
   },
-]
+];
 
-export function Navbar({updateActivePage}) {
+export default function Navbar() {
 
   return (
     <>
@@ -24,21 +27,10 @@ export function Navbar({updateActivePage}) {
         <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-2 sm:px-6 lg:px-8 ">
             <ul className="inline-flex space-x-10 ">
               {menuItems.map((item) => (
-                <li key={item.name}>
-                  <a
-                    onClick={
-                      (e) => {
-                        e.preventDefault();  //prevent default navigation behavior
-
-                        updateActivePage(item.name) //passes the components via states
-                      }
-                    }
-                    href={"#"}
-                    className="text-md font-semibold text-white hover:text-gray-900"
-                  >
-                    {item.name}
-                  </a>
-                </li>
+               <li key={item.name}>
+               <NavLink className={(e) => {return e.isActive ? "button_color":""}} to={item.to}> {item.name}</NavLink>  
+                     {/* here, red is css classname */}
+             </li>
               ))}
             </ul>
 
@@ -49,6 +41,3 @@ export function Navbar({updateActivePage}) {
   )
 }
 
-Navbar.propTypes = {
-  updateActivePage: PropTypes.func.isRequired,
-};
